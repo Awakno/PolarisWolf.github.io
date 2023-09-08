@@ -1,0 +1,334 @@
+.title {
+    font-family:Arial, Helvetica, sans-serif;
+    position: absolute;
+    margin-top: 17%;
+    margin-left: 10%;
+    color: #33cac5;
+
+}
+
+.nav-menu {
+    margin-top: 35px;
+    margin-left: 5%;
+}
+  
+  .nav-menu ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .nav-menu li + li {
+    margin-left: 30px;
+  }
+  
+  .nav-menu a {
+    display: block;
+    position: relative;
+    color: #146562;
+
+    font-size: 25px;
+    text-decoration: none;
+    font-style: bold;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 400;
+  }
+  
+  .nav-menu a:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 25;
+    background-color: rgb(50, 213, 194);
+    visibility: hidden;
+    width: 0px;
+    transition: all 0.3s ease-in-out 0s;
+  }
+  
+  .nav-menu a:hover:before, .nav-menu li:hover > a:before, .nav-menu .active > a:before {
+    visibility: visible;
+    width: 50px;
+  }
+  
+  .nav-menu a:hover, .nav-menu .active > a, .nav-menu li:hover > a {
+    color: #146562;
+    text-decoration: none;
+  }
+
+body {
+    background-color: #262626;
+}
+
+.avatar {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    margin-left: 60%;
+    margin-top: 5%;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.partners-list {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  .partner {
+    width: 500px;
+    height: 400px;
+    margin: 160px;
+    overflow: hidden;
+    font-family:Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-color: #383838;
+    border-radius: 10px;
+    transition: transform 0.3s;
+  }
+  
+  .partner:hover {
+    transform: scale(1.05);
+  }
+  
+  .partner a {
+    display: block;
+    text-decoration: none;
+    color: #555555;
+  }
+  
+  .partner img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .partner h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #777777;
+  }
+  
+  .partner p {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #777777;
+  }
+  
+  .partners-section h1  {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  
+  .partners-section h1 ::after {
+    content: "";
+    display: block;
+    border-bottom: 3px solid var(--third);
+    width: 10%;
+    margin: 0 auto;
+    border-radius: 50px;
+    margin-top: 7px;
+    min-width: 70px;
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .partner {
+      display: block;
+      text-align: center;
+    }
+    
+    .partner img {
+      margin: auto;
+    }
+  }
+  
+  /* Limite de largeur pour les ordinateurs */
+  @media only screen and (min-width: 768px) {
+    .partners-list {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+  
+
+.partners-section {
+    text-align: center;
+    padding: 50px;
+  }
+  
+.project h1 {
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+}
+
+.abouts-me h1 {
+  font-size: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  text-align: center;
+}
+
+.abouts-me {
+  text-align: center;
+  padding: 50px;
+}
+
+.nav-menu.navbar-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  z-index: 999;
+  /* Ajoutez ici les styles supplémentaires pour la navbar lorsqu'elle est en haut */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 10px; /* Ajustez cette valeur en fonction de la hauteur de votre navbar */
+}
+
+
+
+.abouts-me h1 {
+  font-size: 40px;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  text-align: center;
+}
+
+
+
+.footer {
+  background-color: #42bced;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1 1 300px;
+  margin-bottom: 20px;
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+  color: #333;
+  text-decoration: none;
+  
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  background-color: #2e2e2e;
+  box-shadow: 5px 10px 30px rgba(24, 24, 24, 0.1);
+  border-radius: 5px;
+  padding: 20px;
+  width: 40%; /* Reduce the width as needed */
+  margin-bottom: 20px; /* Add space between the cards */
+}
+
+.card-content {
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px; /* Reduce the font size as needed */
+  text-align: left;
+}
+
+.competence {
+  margin-bottom: 10px; /* Reduce the margin-bottom as needed */
+}
+
+.competence h2 {
+  margin-bottom: 10px; /* Reduce the margin-bottom as needed */
+}
+
+.competence h3 {
+  color: #ffffff;
+  margin-bottom: 5px; /* Reduce the margin-bottom as needed */
+  font-size: 16px; /* Reduce the font size as needed */
+}
+
+.bar {
+  width: 100%;
+  height: 8px; /* Reduce the height as needed */
+  background-color: #eee;
+  border-radius: 4px; /* Reduce the border-radius as needed */
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: #4ca8af;
+  border-radius: 4px; /* Reduce the border-radius as needed */
+  transition: width 0.5s ease;
+}
+
+typed-text {
+  display: inline-block; white-space: pre; animation: typing 3s steps(40, end), deleting 3s steps(40, end) 3.5s infinite; animation-fill-mode: forwards; }
+  
+  @keyframes typing { from { width: 0; } to { width: 100%; } }
+  
+  @keyframes deleting { from { width: 100%; } to { width: 0; } }
+  
+  cursor {
+  display: inline-block; width: 2px; height: 20px; background-color: black; animation: blink 1s infinite; }
+  
+  @keyframes blink { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } } 
+
+.present {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  margin-left: 150px ;
+  color: #4ca8af;
+  
+}
+
+.mb_a {
+  text-decoration: none;
+  color: #35878d;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: oblique;
+}
