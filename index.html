@@ -75,7 +75,7 @@ function displayText(text) {
     let displayText = ''
     const intervalId = setInterval(() => {
         displayText += text[index]
-        textContainer.textContent = displayText
+        textContainer.textContent = displayText()
         index++
         if (index === text.length) {
             setTimeout(() => {
