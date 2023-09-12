@@ -32,56 +32,77 @@
     <img class="avatar" src="img/avatar.png" alt="awakno avatar" style="filter: invert(0);">
     
     <script>
-      const textContainer = document.getElementById("text-container");
+      const textContainer = document.getElementById("text-container")
 
-      const typingSpeed = 100;
-      const deletingSpeed = 50;
-      const delay = 1000;
+const typingSpeed = 100
+const deletingSpeed = 50;
+const delay = 1000;
 
-      const text = ['Développeur', 'Designer', 'Passionné'];
-      let currentIndex = 0;
+const text = ['Développeur', 'Designer', 'Passionné'];
 
-      function removeText(charIndex) {
-        const currentText = text[currentIndex].substring(0, text[currentIndex].length - charIndex);
-        textContainer.innerText = currentText;
-
-        if (charIndex > 0) {
-          setTimeout(() => {
-            removeText(charIndex - 1);
-          }, deletingSpeed);
-        } else {
-          setTimeout(() => {
-            if (currentIndex < text.length - 1) {
-              currentIndex++;
-              displayText(0);
-            } else {
-              setTimeout(() => {
-                currentIndex = 0;
-                displayText(0);
-              }, delay);
-            }
-          }, delay);
+// T'essaye de faire trop de choses différentes dans une seule fonction, pense à séparer les fonctionnalitées de ton code
+// Par exemple là, pour mes deux fonctions, je leur fais faire des trucs par rapport à comment je les ai nommé (et encore
+// là, je pourrai même les nommé removeTextFromTextContainer et displayTextOfTextContainer parce que j'utilise directement
+// textContainer, si tu voulais faire un truc vraiment clean t'aurais pu rajouter des paramètres à tes fonctions qui s'appelleraient
+// 'container' et 'typingSpeed' ou 'deletingSpeed' suivant ta fonction, mais bon ça c'est des détails)
+function removeText(text) {
+    let index = text.length - 1
+    let displayText = ''
+    // là au lieu de faire de la récurssion avec tes Timeout, vaut mieux utiliser un setInterval et l'arreter avec clearInterval
+    const intervalId = setInterval(() => {
+        // là j'ai utlisé slice au lieu de substring mais ça revient au même
+        displayText = text.slice(0, index) 
+        // là j'ai mis textContent au lieu de innerText pour quelques raisons:
+        // - c'est plus performent (innerText prend en compte les styles et la mise en page CSS, il exclut le texte 
+        // dans les éléments masqués 'display: none;' donc faut faire gaffe)
+        // - textContent à un peu plus de compatibilité (négligable en vrai) 
+        // en gros c'est mieu, habitu toi à l'utiliser à la place de innerText (au moins t'as pas utiliser innerHtml)
+        textContainer.textContent = displayText 
+        index--
+        if (index < 0) {
+            // là en gros setInterval te renvoit l'identifient de l'intervale que tu vient de créer, et avec celui ci
+            // tu peux l'arreter en faisant ducoup clearInterval(l'id de ton interval)
+            clearInterval(intervalId)
+            // là j'ai pas mis de return parce que c'est à la fin de la fonction mais oubli que même si tu arrete l'interval, 
+            // l'arrow function va quand même finir de s'executer
         }
-      }
+    }, deletingSpeed)
+}
 
-      function displayText(charIndex) {
-        const currentText = text[currentIndex].substring(0, charIndex);
-        textContainer.innerText = currentText;
-
-        if (charIndex < text[currentIndex].length) {
-          setTimeout(() => {
-            displayText(charIndex + 1);
-          }, typingSpeed);
-        } else {
-          setTimeout(() => {
-            removeText(text[currentIndex].length);
-          }, delay);
+// Avant t'avais mis charIndex en paramètre mais vu le nom de ta fonction c'est mieux de mettre le texte que tu veux afficher
+function displayText(text) {
+    let index = 0
+    let displayText = ''
+    const intervalId = setInterval(() => {
+        displayText += text[index]
+        textContainer.textContent = displayText
+        index++
+        if (index === text.length) {
+            setTimeout(() => {
+                // là c'est MAL ce que j'ai fait, ma fonction s'appelle displayText, elle devrait juste afficher le texte
+                // que je lui est demander, mais là je remove le texte dans cette même fonction donc PAS BIEN, mais vu
+                // que j'ai un peu la flemme de me rappeller comment coder correctement j'ai fait ça à l'arrache, mais ça marche  
+                removeText(text);
+            }, delay);
+            clearInterval(intervalId)
         }
-      }
+    }, typingSpeed)
+}
 
-      displayText(0);
+// cette partie là je l'ai vraiment fait à l'arrache, mais ça marche
+function timeout(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function main() {
+    for (let word of text) {
+        displayText(word)
+        await timeout(word.length*typingSpeed+word.length*deletingSpeed+delay);
+    }
+}
+
+main()
     </script>
-
+    <div class="text-container"></div>
     <section class="abouts-me" id="about">
     <h1>A propos de moi</h1>
         <div class="card-container">
